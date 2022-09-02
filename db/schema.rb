@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_08_29_053433) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.boolean "is_active", default: true, null: false
+    t.boolean "is_deleted", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_08_29_053433) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "namne", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
