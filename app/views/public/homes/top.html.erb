@@ -1,27 +1,33 @@
-<h1>nagano_cake top</h1>
-
-  <div>
-    <h3>顧客用</h3>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-    <h3>管理者用</h3>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
+<div class="container my-5">
+<div class="row">
+  <div class="col">
+    <div class="col-5 offset-5">
+      <h2>ログイン画面</h2>
+      <div>
+        <h3>顧客用</h3>
+        <% if customer_signed_in? %>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path %>
+          </li>
+        <% end %>
+        <h3>管理者用</h3>
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "ログイン", new_admin_session_path %>
+          </li>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>

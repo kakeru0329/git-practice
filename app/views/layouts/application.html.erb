@@ -6,75 +6,88 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <% if admin_signed_in? %>
-            <%= link_to "NaganoCAKE", admin_root_path(current_admin.id) %> <%#admin/homes/topに行きたい %>
-      <% else %>
-            <%= link_to "NaganoCAKE", root_path %>
-      <% end %>
+    　<nav class="navbar navbar-expand-lg navbar-light">
+        <% if admin_signed_in? %>
+          <%= link_to "NaganoCAKE", admin_root_path(current_admin.id), class:"header-title navbar-brand" %> <%#admin/homes/topに行きたい %>
+        <% else %>
+          <%= link_to "NaganoCAKE", root_path, class:"header-title navbar-brand" %>
+        <% end %>
 
-      <div>
-        <ul class="navbar-nav">
-         <% if customer_signed_in? %>
-          <li class="nav-item active">
-           <span>ようこそ<%= current_customer %>さん</span><%#ログイン顧客名表示%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "マイページ", customer_path(current_customer) %>
-          </li>
-          <li class="nav-item ">
-            <%= link_to "商品一覧", items_path %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "カート", cart_items_path %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </li>
-         <% elsif admin_signed_in? %>
-           <li class="nav-item">
-             <%= link_to "商品一覧", admin_items_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "会員一覧", admin_customers_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "注文履歴一覧", admin_root_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "商品新規登録", new_admin_item_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "ジャンル一覧", admin_genres_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-           </li>
-         <% else %>
-           <li class="nav-item">
-             <%= link_to "about", about_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "商品一覧", items_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "新規登録", new_customer_registration_path %>
-           </li>
-           <li class="nav-item">
-             <%= link_to "ログイン", new_customer_session_path %>
-           </li>
-         <% end %>
-        </ul>
-      </div>
-      </header>
+        <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <% if customer_signed_in? %>
+              <li class="nav-item active">
+                <span>ようこそ<%= full_name(current_customer) %>さん</span><%#ログイン顧客名表示%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "マイページ", customer_path(current_customer),class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item ">
+                <%= link_to "商品一覧", items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "カート", cart_items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "商品一覧", admin_items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "会員一覧", admin_customers_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "注文履歴一覧", admin_root_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "商品新規登録", new_admin_item_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ジャンル一覧", admin_genres_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "about", about_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "商品一覧", items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
       <%= yield %>
-
+    </main>
+    <footer>
+      <p class="text-center">©2022 </p>
+      <div class="d-flex justify-content-center">
+        <a href="#" class="mx-1 text-dark"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="#" class="mx-5 text-dark"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="#" class="mx-1 text-dark"><i class="far fa-envelope fa-2x"></i></a>
+      </div>
+      </footer>
   </body>
 </html>
