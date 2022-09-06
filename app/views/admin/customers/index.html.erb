@@ -12,24 +12,25 @@
       </thead>
 
       <tbody>
-        <% @customers.each do |costomer| %>
-          <tr>
-            <td><%= @customers_id %></td>
-          </tr>
-          <tr>
-            <td><%= @customers_name %></td>
-          </tr>
-          <tr>
-            <td><%= @customers_email %></td>
-          </tr>
-          <tr>
-            <td><% if @customer.is_active == true %>
-              <p class="text-success ">退会済</p>
-              <% else %>
-              <p class="text-secondary ">有効</p>
-              <% end %>
-            </td>
-          </tr>
+        <% @customers.each do |customer| %>
+         <tr>
+          <td class="info col-xs-1">
+            <%= @customers_id %>
+          </td>
+          <td class="text-left">
+            <%= link_to @customer_last_name,admin_customer_path(customer) %>
+          </td>
+          <td class="text-left">
+            <%= @customers_email %>
+          </td>
+          <td class="col-xs-2">
+            <% if @customers_is_deleted == true%>
+              <p class="text-secondary">退会済</p>
+            <% else %>
+              <p class="text-success">有効</p>
+            <% end %>
+          </td>
+         </tr>
         <% end %>
       </tbody>
 </table>

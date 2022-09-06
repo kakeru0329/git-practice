@@ -32,28 +32,18 @@
   </tr>
   <tr>
     <th>パスワード(６文字以上)</th>
-    <td><%= f.password_field :encrypted_password, autofocus: true, autocomplete: "encrypted_password" %></td>
+    <td><%= f.password_field :password %></td>
+
   </tr>
   <tr>
     <th>パスワード(確認用)</th>
-    <td><%= f.password_field :encrypted_password, autofocus: true, autocomplete: "encrypted_password" %></td>
+    <td><%= f.password_field :password_confirmation, autocomplete: "current-password" %></td>
   </tr>
 
 </table>
 
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
   <div class="actions">
     <%= f.submit "新規登録" %>

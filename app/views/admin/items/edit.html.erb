@@ -1,12 +1,13 @@
 <h2>商品登録編集</h2>
 
 
-  <%= form_with model: @item do |f| %>
+  <%= form_with model: @item, url: admin_item_path do |f| %>
   <table>
     <tr>
       <div class="form-group">
         <%= f.label :商品画像, class:"form_label"%>
-
+        <%= image_tag @item.get_image(300, 200), class:"mb-3 ml-3" %>
+        <%= f.file_field :image %>
       </div>
     </tr>
     <tr>
@@ -35,7 +36,7 @@
     </tr>
     <tr>
       <div class="form-group">
-        <%= f.label :販売ステータス,class:"form_label my-3" %>
+        <%= f.label :"販売ステータス",class:"form_label my-3" %>
         <%= f.radio_button :is_active, true, checked: true %>
         <%= f.label :is_active, "販売中",class:"form_label" %>
         <%= f.radio_button :is_active, false %>
@@ -43,8 +44,8 @@
       </div>
     </tr>
       <div class="form_group">
-        <%= f.submit '変更を保存' %>
-        <%= link_to "商品詳細へ戻る", admin_item_path %>
+        <%= f.submit '変更を保存', class:"btn btn-success my-3 mr-3" %>
+        <%= link_to "商品詳細へ戻る", admin_item_path, class:"btn btn-outline-secondary" %>
       </div>
     </table>
   <% end %>

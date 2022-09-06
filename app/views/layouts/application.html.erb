@@ -27,7 +27,7 @@
           <ul class="navbar-nav">
             <% if customer_signed_in? %>
               <li class="nav-item active">
-                <span>ようこそ<%= full_name(current_customer) %>さん</span><%#ログイン顧客名表示%>
+                <span>ようこそ</span><%#ログイン顧客名表示%>
               </li>
               <li class="nav-item">
                 <%= link_to "マイページ", customer_path(current_customer),class: 'btn btn-outline-secondary mx-3 my-1' %>
