@@ -1,5 +1,5 @@
 <h1>会員情報編集</h1>
-<%= form_with model: @customer, url: customer_path do |f| %>
+<%= form_with model: @customer, url: customer_update_path(@customer) do |f| %>
   <table>
     <tr>
       <div class="form_group">
@@ -23,12 +23,6 @@
     </tr>
     <tr>
       <div class="form_group">
-        <%= f.label :"パスワード" %>
-        <%= f.password_field :encrypted_password %>
-      </div>
-    </tr>
-    <tr>
-      <div class="form_group">
         <%= f.label :"郵便番号" %>
         <%= f.text_field :postal_code %>
       </div>
@@ -45,18 +39,10 @@
         <%= f.text_field :telephone_number %>
       </div>
     </tr>
-    <tr>
-      <div class="form-group">
-        <%= f.label :"退会ステータス",class:"form_label my-3" %>
-        <%= f.radio_button :is_deleted, true, checked: true %>
-        <%= f.label :is_deleted, "退会済み",class:"form_label" %>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, "有効",class:"form_label" %>
-      </div>
-    </tr>
+
       <div class="form_group">
-        <%= f.submit '変更を保存', class:"btn btn-success my-3 mr-3" %>
-        <%= link_to "マイページへ戻る", customer_path, class:"btn btn-outline-secondary" %>
+        <%= f.submit '編集を保存', class:"btn btn-success my-3 mr-3" %>
+        <%= link_to "退会する場合", customer_unsubscribe_path, class:"btn btn-outline-secondary" %>
       </div>
     </table>
   <% end %>

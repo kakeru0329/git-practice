@@ -26,9 +26,16 @@ Rails.application.routes.draw do
     get "/about" => "homes#about", as: "about"
     resources :addresses, only: [:index, :edit, :update, :create, :destroy]
     resources :orders, only: [:new, :index, :show, :confirm, :conplete, :create]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :customers, only: [:edit, :show, :update, :unsubscribe, :withdraw]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    get'/customers/information/edit' => 'customers#edit', as: 'customer_edit'
+    get'/customers/show' => 'customers#show', as: 'customer_show'
+    patch'/customers/information' => 'customers#update', as: 'customer_update'
+
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+    patch '/customers/withdraw' => 'customerswithdraw', as: 'customer_withdraw'
+
     resources :items, only: [:index, :show]
+
   end
 
 

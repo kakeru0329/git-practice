@@ -68,7 +68,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :last_name, :first_name,
      :last_name_kana, :first_name_kana, :email,
      :encrypted_password, :postal_code, :address,
-     :telephone_number])#カラム（姓～電話番号まで
+     :telephone_number])#カラム 姓～電話番号まで
    end
 
 end
