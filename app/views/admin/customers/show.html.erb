@@ -1,5 +1,4 @@
 <h1>会員詳細</h1>
-<h2><%= last_name(@customer)%>さんの会員詳細</h2>
 
 <table>
   <tr>
@@ -45,6 +44,6 @@
 
 </table>
 <div>
-  <p><%= link_to "編集する",edit_admin_customer_path(customer.id) %></p>
-  <p><%= link_to "注文履歴一覧を見る",admin_root_path %></p>
+  <p><%= link_to "編集する",edit_admin_customer_path(@customer.id), class: "btn btn-success" %></p>
+  <p><%= link_to "注文履歴一覧を見る",admin_root_path, class:"btn btn-outline-secondary" %></p>
 </div>

@@ -1,8 +1,8 @@
 <h1>会員情報編集</h1>
-  <h2><%= last_name(@customer)%>さんの会員情報編集</h2>
+
 
   <table>
-    <%= form_with model: @customer do |f| %>
+    <%= form_with model: @customer, url: admin_customer_path do |f| %>
       <tr>
         <div class="form_group">
           <%= f.label :"会員ID" %>
@@ -49,13 +49,16 @@
       </tr>
       <tr>
         <div class="form-group">
-          <%= f.label :退会ステータス, class:"form_label" %>
-          <%= f.collection_select :customer_id, Customer.all, :id, :name, :prompt => "--選択してください--",class:"form-select" %>
+          <%= f.label :会員ステータス, class:"form_label" %>
+          <%= f.radio_button :is_deleted, false %>
+        　<%= f.label :is_deleted, "有効"%>
+        　<%= f.radio_button :is_deleted, true %>
+        　<%= f.label :is_deleted, "退会" %>
         </div>
       </tr>
       <div class="form-group">
-        <%= f.submit "会員情報更新" %>
-        <%= link_to "会員詳細へ戻る",admin_customer_path(customer.id) %>
+        <%= f.submit "会員情報更新", class: "btn btn-success" %>
+        <%= link_to "会員詳細へ戻る",admin_customer_path, class:"btn btn-outline-secondary" %>
       </div>
     <% end %>
   </table>

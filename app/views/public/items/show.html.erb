@@ -1,2 +1,55 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<h1>商品詳細</h1>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12 mt-5">
+      <h2>商品詳細</h2>
+        <%= image_tag @item.get_image(300, 200) %>
+    </div>
+    <div class="col-md-12 mt-5">
+      <div class="col-lg">
+        <table class="table">
+          <tr>
+            <th>商品名</th>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @item.genre_id %></td>
+          </tr>
+          <tr>
+            <th>税込価格<br>
+                (税抜き価格)
+            </th>
+            <td><%= @item.with_tax_price%><br>
+            (<%= @item.price %>) 円</td>
+          </tr>
+          <tr>
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :amount, (1..10) %>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+          </tr>
+          <tr>
+            <th>販売状況</th>
+            <td>
+              <% if @item.is_active == true %>
+                <p>販売中</p>
+              <% else %>
+                <p>売り切れ</p>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to "商品一覧へ戻る", items_path, class:"btn btn-outline-secondary" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
