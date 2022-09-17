@@ -28,7 +28,7 @@
             (<%= @item.price %>) 円</td>
           </tr>
           <tr>
-            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+            <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
               <%= f.hidden_field :item_id, value: @item.id %>
               <%= f.select :amount, (1..10) %>
               <%= f.submit "カートに入れる", class: "btn btn-success" %>
@@ -45,8 +45,8 @@
             </td>
           </tr>
           <tr>
-            <td></td>
-            <td><%= link_to "商品一覧へ戻る", items_path, class:"btn btn-outline-secondary" %></td>
+            <th></th>
+            <th><%= link_to "商品一覧へ戻る", items_path, class:"btn btn-outline-secondary" %></th>
           </tr>
         </table>
       </div>

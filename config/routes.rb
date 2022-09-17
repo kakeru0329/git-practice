@@ -25,9 +25,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     resources :addresses, only: [:index, :edit, :update, :create, :destroy]
-    resources :orders, only: [:new, :index, :show, :confirm, :conplete, :create]
+    resources :orders, only: [:new, :index, :show, :create]
+    post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    get '/orders/conplete' => 'orders#conplete', as: 'order_conplete'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: "cart_all_destroy"
     get'/customers/information/edit' => 'customers#edit', as: 'customer_edit'
     get'/customers/show' => 'customers#show', as: 'customer_show'
     patch'/customers/information' => 'customers#update', as: 'customer_update'

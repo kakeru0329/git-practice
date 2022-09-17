@@ -3,7 +3,6 @@
 <table class="table">
       <thead>
         <tr>
-          <th></th>
           <th>会員ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
@@ -15,16 +14,16 @@
         <% @customers.each do |customer| %>
          <tr>
           <td class="info col-xs-1">
-            <%= @customers_id %>
+            <%= customer.id %>
           </td>
           <td class="text-left">
-            <%= link_to @customer_last_name,admin_customer_path(customer) %>
+            <%= link_to customer.last_name,edit_admin_customer_path(customer) %>
           </td>
           <td class="text-left">
-            <%= @customers_email %>
+            <%= customer.email %>
           </td>
           <td class="col-xs-2">
-            <% if @customers_is_deleted == true%>
+            <% if customer.is_deleted == true%>
               <p class="text-secondary">退会済</p>
             <% else %>
               <p class="text-success">有効</p>
