@@ -17,23 +17,15 @@
             <td><%= @item.introduction %></td>
           </tr>
           <tr>
-            <th>ジャンル</th>
-            <td><%= @item.genre_id %></td>
-          </tr>
-          <tr>
             <th>税込価格<br>
                 (税抜き価格)
             </th>
             <td><%= @item.with_tax_price%><br>
             (<%= @item.price %>) 円</td>
           </tr>
-          <tr>
-            <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.select :amount, (1..10) %>
-              <%= f.submit "カートに入れる", class: "btn btn-success" %>
-            <% end %>
-          </tr>
+
+
+
           <tr>
             <th>販売状況</th>
             <td>
@@ -49,6 +41,11 @@
             <th><%= link_to "商品一覧へ戻る", items_path, class:"btn btn-outline-secondary" %></th>
           </tr>
         </table>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 
     <h1>配送先変更</h1>
-    <%= form_with model: @adrress, url: address_path,method: :patch do |f| %>
+    <%= form_with model: @address do |f| %>
       <table>
         <tr>
           <th>
@@ -11,7 +11,7 @@
         <tr>
           <th>
             <td><%= f.label :住所, class:"form_label" %></td>
-            <td><%= f.text_field :adrress, placeholder:"住所" %></td>
+            <td><%= f.text_field :address, placeholder:"住所" %></td>
           </th>
         </tr>
         <tr>
