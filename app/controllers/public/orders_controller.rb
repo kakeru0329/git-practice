@@ -14,15 +14,17 @@ class Public::OrdersController < ApplicationController
 
   def create
     @cart_item = item.find(params[:id])
-    
+    @order.customer_id = current_customer.id #自身のidを代入
+    @order.save
     redirect_to order_conplete_path
   end
 
   def confirm
-    @cart_items = current_customer.cart_items
-    @order = Order.new(
-      customer: current_customer,
-      payment_method: params[:order][:payment_method])
+    @order = Order.new(order_params)
+    @address = Address.find(params[:order][:address_id])
+    @order.postal_code = @address.postal_code
+    @order.address = @address.address
+    @order.name = @address.name
   end
 
   def conplete
@@ -30,7 +32,7 @@ class Public::OrdersController < ApplicationController
 
   private
 
-    def orders_params
+    def order_params
       params.require(:order).permit(:name, :address, :postal_code,
       :total_amount, :freight, :payment_method)
     end

@@ -6,6 +6,10 @@ class Item < ApplicationRecord
 
 
   has_one_attached :image
+  
+  validates :item_name, presence: true
+  validates :explanation, presence: true
+  validates :with_tax_price, presence: true
 
   def get_image(width, height)
     unless image.attached?
