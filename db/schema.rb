@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_112543) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.boolean "is_deleted", default: true, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_112543) do
     t.integer "item_id", null: false
     t.integer "order_id", null: false
     t.integer "price", null: false
-    t.integer "amount", null: false
+    t.integer "amount", null: false#数量
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_112543) do
     t.integer "customer_id", null: false
     t.string "address", null: false
     t.string "postal_code", null: false
-    t.string "total_amount", null: false
+    t.string "total_amount", null: false#総合計金額
     t.integer "freight", null: false
     t.integer "payment_method", null: false
     t.string "name", null: false

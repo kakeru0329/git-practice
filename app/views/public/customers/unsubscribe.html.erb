@@ -11,7 +11,7 @@
       </div>
       <div class="d-flex justify-content-around mt-5">
         <%= link_to "退会しない",customer_show_path,class:"btn btn-primary"%>
-        <%= link_to "退会する",customer_withdraw_path,method: :patch,class:"btn btn-danger"%>
+        <%= link_to "退会する",customer_withdraw_path,method: :patch,class:"btn btn-danger", data: {confirm: "削除しますか？"} %>
       </div>
     </div>
   </div>

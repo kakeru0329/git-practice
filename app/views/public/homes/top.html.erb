@@ -1,33 +1,39 @@
 <div class="container my-5">
-<div class="row">
-  <div class="col">
-    <div class="col-5 offset-5">
-      <h2>ログイン画面</h2>
-      <div>
-        <h3>顧客用</h3>
-        <% if customer_signed_in? %>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path %>
-          </li>
-        <% end %>
-        <h3>管理者用</h3>
-        <% if admin_signed_in? %>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "ログイン", new_admin_session_path %>
-          </li>
-        <% end %>
+  <div class="row">
+    <div class="col">
+      <div class="col-5 offset-5">
+        <p>
+          ようこそ、NaganoCakeへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
       </div>
+    </div>
+  </div>
+  <!-- オススメ商品表示 -->
+  <br>
+  <h4 class="recommendation"><i class="fas fa-crown"></i> オススメ商品 <i class="fas fa-crown"></i></h4><br>
+  <div class="row">
+    <div id="multiple-items">
+      <% @items.each do |item| %>
+        <div class="recommendation-items">
+          <%= link_to item_path(item.id) do %> <!-- 画像をクリックしたら商品詳細画面へ遷移 -->
+          <%= image_tag item.get_image(150, 150) %></br>
+          <% end %>
+          <p><%= item.name %></p>
+          <p>¥<%= (item.price * 1.1).floor %></p> <!-- 税込計算式/.floor => 浮動小数点数の切り捨てを行うためFloatクラスのfloorメソッドを使用 -->
+        </div>
+      <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="col-5 offset-5">
+      <p><%= link_to "商品を見に行く", items_path %></p>
     </div>
   </div>
 </div>

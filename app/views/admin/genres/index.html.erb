@@ -10,7 +10,7 @@
       <%= form_with model: @genre,url: admin_genres_path,method: :post, remote: true do |f| %>
         <%= f.label :name, "ジャンル名" %>
         <%= f.text_field :name, id: "form" %>
-        <%= f.submit "追加する" %>
+        <%= f.submit "新規登録", class:"btn btn-success my-3 mr-3" %>
       <% end %>
     </div>
   </div>
@@ -34,6 +34,7 @@
           <% end %>
         <tbody>
       </table>
+      <%= paginate @genres %>
     </div>
   </div>
 </div>

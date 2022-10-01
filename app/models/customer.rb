@@ -9,8 +9,9 @@ class Customer < ApplicationRecord
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, presence: true
 
 
-def full_name
-    self.first_name + self.last_name
-end
+# 会員フルネーム
+  def full_name
+    self.last_name + " " + self.first_name
+  end
 
 end
