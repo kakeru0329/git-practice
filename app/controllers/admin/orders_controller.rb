@@ -6,9 +6,12 @@ class Admin::OrdersController < ApplicationController
   	# 注文内容の情報を取得しています！
   	@order = Order.find(params[:id])
     # 注文内容の商品を取得しています！
-  	@order_detail = @order.order_details
-
+  	@order_details = @order.order_details
+  	@total_price = 0
+    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
   end
+
+
 
   private
   def item_params

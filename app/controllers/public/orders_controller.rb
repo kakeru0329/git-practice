@@ -36,17 +36,17 @@ class Public::OrdersController < ApplicationController
       @order.name = Address.find(params[:order][:address_id]).name #newページで選ばれた配送先住所idから特定して宛名の取得代入
     else
     #elsif params[:order][:my_addresss] ==  "3" #addressが”3”新しいお届け先が選ばれたら
-     # @address = Address.new #変数の初期化
+      #@address = Address.new #変数の初期化
       #@address.address = params[:order][:address_id] #newページで新しいお届け先に入力した住所を取得代入
       #@address.name = params[:order][:name] #newページで新しいお届け先に入力した宛名を取得代入
       #@address.postal_code = params[:order][:postal_code] #newページで新しいお届け先に入力した郵便番号を取得代入
       #@address.current_customer_id = current_customer.id #newページで新しいお届け先に入力したidを取得代入
       #if @address.save #保存
-       # @order.postal_code = @address.postal_code #上記で代入された郵便番号をorderに代入
+        #@order.postal_code = @address.postal_code #上記で代入された郵便番号をorderに代入
         #@order.address = @address.address #上記で代入された住所をorderに代入
         #@order.name = @address.name #上記で代入された宛名をorderに代入
       #else
-       #render new
+        #render new
       #end
     end
   end
